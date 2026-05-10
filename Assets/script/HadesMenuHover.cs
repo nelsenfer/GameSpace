@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
-
+using DG.Tweening; // (Kalau kamu pakai DOTween di script ini)
+using UnityEngine.SceneManagement; // <--- TAMBAHKAN BARIS INI
 public class HadesMenuHover : MonoBehaviour, IPointerEnterHandler
 {
     public Transform pointerIcon;
@@ -24,6 +25,14 @@ public class HadesMenuHover : MonoBehaviour, IPointerEnterHandler
         {
             SetActiveState(false);
         }
+    }
+
+    public void PlayGame()
+    {
+        DOVirtual.DelayedCall(0.5f, () =>
+        {
+            SceneManager.LoadScene("golf");
+        });
     }
 
     public void OnPointerEnter(PointerEventData eventData)
